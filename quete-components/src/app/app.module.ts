@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { BlockComponent } from './block/block.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { Quest3Component } from './quest-3/quest-3.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
+import { UserComponent } from './user/user.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { Quest3Component } from './quest-3/quest-3.component';
     HeroesComponent,
     BlockComponent,
     UserProfileComponent,
-    Quest3Component
+    Quest3Component,
+    HomeComponent,
+    SignupComponent,
+    UserComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

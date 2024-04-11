@@ -1,0 +1,19 @@
+ul {
+  display: flex;
+  flex-direction: wrap;
+  gap: 20px;
+  list-style: none;
+  justify-content: end;
+  margin-right: 30px;
+}
+
+li {
+  background-color: rgb(102, 44, 44);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
