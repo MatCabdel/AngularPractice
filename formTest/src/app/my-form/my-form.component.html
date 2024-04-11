@@ -1,0 +1,45 @@
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()" >
+  <div>
+    <span>Form submitted ? {{myForm.submitted}}</span>
+    <span>Form valid ? {{myForm.valid}}</span>
+    <span>Form invalid ? {{myForm.invalid}}</span>
+  </div>
+  <fieldset>
+    <label for="title-order">Title</label>
+    <input id="title-order" name="title-order" type="text" [(ngModel)]="newOrder.title" #title="ngModel" required minlength="5">
+    <div *ngIf="myForm.submitted && title.errors" style="color: red">
+      <span *ngIf="title.errors?.['required']">Le titre est requis</span>
+      <span *ngIf="title.errors?.['minlength']">La longueur minimale doit être supérieure à 5</span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <label for="quantity-order">Quantité</label>
+    <input id="quantity-order" name="quantity-order" [(ngModel)]="newOrder.quantity" #quantity="ngModel" type="number" required min="1">
+    <div *ngIf="myForm.submitted && quantity.errors" style="color: red">
+      <span *ngIf="quantity.errors?.['required']">Une quantité est requise</span>
+      <span *ngIf="quantity.errors?.['min']">Quantité minimum doit être 1</span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <label for="date-order">Date de commande</label>
+    <input id="date-order" name="date-order" [(ngModel)]="newOrder.date" type="date" #date="ngModel"required>
+    <div *ngIf="myForm.submitted && date.errors" style="color: red">
+      <span *ngIf="date.errors?.['required']">Le champ date est requis</span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <label for="contact-order">Contact</label>
+    <input id="contact-order" name="contact-order" [(ngModel)]="newOrder.contact" #contact="ngModel" type="email" required email>
+    <div *ngIf="myForm.submitted && contact.errors" style="color: red">
+      <span *ngIf="contact.errors?.['required']">Le champ email est requis</span>
+      <span *ngIf="contact.errors?.['email']">L'adresse email doit être valide</span>
+    </div>
+  
+  </fieldset>
+
+  <button type="reset">Restaurer</button>
+  <button type="submit">Sauvegarder</button>
+</form>
