@@ -1,3 +1,103 @@
+<form #myForm="ngForm" (ngSubmit)=" myForm.valid && onSubmit()">
+  <div>
+    Form submitted ? {{ myForm.submitted }} Form valid ? {{ myForm.valid }} Form
+    invalid ? {{ myForm.invalid }}
+  </div>
 
+  <fieldset>
+    <label for="firstname-order">Prénom</label>
+    <input
+      id="firstname-order"
+      name="firstname-order"
+      type="text"
+      [(ngModel)]="newOrder.firstName"
+      #firstname="ngModel"
+      required
+      minlength="3"
+      maxlength="15"
+      [style.background-color]="myForm.submitted ? (myForm.valid ? 'rgb(197, 238, 202)' : 'rgb(238, 197, 197)') : 'white'"
+    />
+  </fieldset>
 
-<p>signup works!</p>
+  <!-- Message d'erreurs de title -->
+  <div *ngIf="myForm.submitted && firstname.errors" style="color: red">
+    <span *ngIf="firstname.errors?.['required']">Le Prenom est requis</span>
+    <span *ngIf="firstname.errors?.['minlength']"
+      >La longueur minimale doit être supérieure à 3</span
+    >
+    <span *ngIf="firstname.errors?.['maxlength']"
+      >La longueur maximale doit être inférieure à 30</span
+    >
+  </div>
+
+  <fieldset>
+    <label for="lastname-order">Nom</label>
+    <input
+      id="lastname-order"
+      name="lastname-order"
+      [(ngModel)]="newOrder.lastName"
+      #lastname="ngModel"
+      type="text"
+      required
+      minlength="3"
+      maxlength="15"
+      [style.background-color]="myForm.submitted ? (myForm.valid ? 'rgb(197, 238, 202)' : 'rgb(238, 197, 197)') : 'white'"
+    />
+  </fieldset>
+
+  <!-- Message d'erreurs de quantity -->
+  <div *ngIf=" myForm.submitted && lastname.errors" style="color: red">
+    <span *ngIf="lastname.errors?.['required']"
+      >Le Nom est requis</span
+    >
+    <span *ngIf="lastname.errors?.['minlength']"
+    >La longueur minimale doit être supérieure à 3</span
+  >
+  <span *ngIf="lastname.errors?.['maxlength']"
+    >La longueur maximale doit être inférieure à 15</span
+  >
+  </div>
+  <fieldset>
+    <label for="contact-order">Mail</label>
+    <input
+      id="contact-order"
+      name="contact-order"
+      type="email"
+      [(ngModel)]="newOrder.contact"
+      #contact="ngModel"
+      required
+      email
+      [style.background-color]="myForm.submitted ? (myForm.valid ? 'rgb(197, 238, 202)' : 'rgb(238, 197, 197)') : 'white'"
+    />
+  </fieldset>
+  <!-- Message d'erreurs de contact -->
+  <div *ngIf=" myForm.submitted && contact.errors" style="color: red">
+    <span *ngIf="contact.errors?.['required']">L'email est requis</span>
+    <span *ngIf="contact.errors?.['email']"
+      >L'email n'est pas valide</span
+    >
+  </div>
+  <fieldset>
+    <label for="password-order">Mot de passe</label>
+    <input
+      id="password-order"
+      name="password-order"
+      type="password"
+      [(ngModel)]="newOrder.password"
+      #password="ngModel"
+      minlength="8"
+      required
+      [style.background-color]="myForm.submitted ? (myForm.valid ? 'rgb(197, 238, 202)' : 'rgb(238, 197, 197)') : 'white'"
+    />
+  </fieldset>
+
+  <!-- Message d'erreurs de date -->
+  <div *ngIf="myForm.submitted && password.errors" style="color: red">
+    <span *ngIf="password.errors?.['required']">Le mot de passe est requis</span>
+    <span *ngIf="password.errors?.['minlength']"
+    >Le mot de passe doit avoir au moins 8 caractères</span
+  >
+  </div>
+  <button type="reset">Restaurer</button>
+  <button type="submit">S'inscrire</button>
+</form>
