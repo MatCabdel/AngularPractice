@@ -1,0 +1,6 @@
+
+
+<h2>compétence du développeur:</h2>
+<p>{{ newDeveloper.firstname }} {{ newDeveloper.lastname }}</p>
+<app-skills *ngFor="let skill of newDeveloper.listSkill" [skillsData]="skill"></app-skills>
+
