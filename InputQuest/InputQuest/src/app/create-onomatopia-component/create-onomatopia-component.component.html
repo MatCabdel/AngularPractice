@@ -1,0 +1,16 @@
+<h1>formulaire:</h1>
+
+
+<form #myForm="ngForm"(ngSubmit)="myForm.valid && createOnomatopia()">
+  <div>
+    Form submitted ? {{myForm.submitted}}
+    Form valid ? {{myForm.valid}}
+    Form invalid ? {{myForm.invalid}}
+  </div>
+  <div>
+    <label for="name">Nom de l'onomatopé: </label>
+  <input type="text" id="name" name="name" [(ngModel)] ="newOnomatopia" required />
+</div>
+
+  <button type="submit">Sauvegarder</button>
+</form>
