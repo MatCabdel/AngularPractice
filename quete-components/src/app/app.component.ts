@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HelloWorldService } from './hello-world.service';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title: string = 'Raclette party 🧀';
 
+
+  private helloWorldService = inject(HelloWorldService);
+
+  onClick() {
+    console.log(this.helloWorldService.getHelloWorld());
+  }
+
+
+  /*
   isThisIngredientVital: boolean = false;
   isGuestListDisplayed: boolean = true;
-  songList: string[] = ["Alejandro", "Ne me quitte pas", "Le temps est bon"];
+  songList: string[] = ["Alejandro", "Ne me quitte pas", "Le temps est bon"]; */
 }
