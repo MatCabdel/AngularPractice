@@ -13,9 +13,11 @@ export class CocktailListComponent {
   public cocktailService = inject(CocktailService);
   public cocktails: Cocktail[]= []
 
-  onClick() {
-    console.log(this.cocktailService.getCocktails());
-    return (this.cocktails = this.cocktailService.getCocktails());
+  ngOnInit(): void {
+    this.cocktailService.getCocktails().subscribe(cocktailsFromJsonFile => {
+      this.cocktails = cocktailsFromJsonFile;
+    });
+
   }
 
 }
